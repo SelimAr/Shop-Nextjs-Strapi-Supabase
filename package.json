@@ -1,0 +1,12 @@
+{
+  "name": "e-commerce-strapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn concurrently \"cd frontend && yarn dev\" \"cd backend && yarn develop\""
+  },
+  "dependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
