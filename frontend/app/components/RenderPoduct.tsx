@@ -10,8 +10,6 @@ export default function RenderPoduct() {
   const paths = ["laptops", "smartphones", "accessories", "review"];
   const currentPath = paths.find((path) => path === pathname.split("/")[2]);
 
-  // commit test front
-
   return (
     <>
       {pathname === `/shop/${currentPath}` ? (
