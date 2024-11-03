@@ -65,7 +65,7 @@ export default function page() {
             name="username"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>Nom d'utilisateur</FormLabel>
                 <FormControl>
                   <Input placeholder="Nom d'utilisateur" {...field} />
                 </FormControl>
