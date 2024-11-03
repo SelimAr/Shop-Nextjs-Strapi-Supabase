@@ -11,7 +11,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import RenderPoduct from "@/app/components/RenderPoduct";
+import ProductsRender from "@/app/components/ProductsRender";
 
 export default function page() {
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function page() {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <RenderPoduct />
+      <ProductsRender />
     </div>
   );
 }

@@ -8,8 +8,29 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import ProductCards from "../components/ProductCards";
+import { ProductsType } from "@/type";
 
-export default function page() {
+const shopDataURL = `http://localhost:1337/api/product-names`;
+
+const Options: RequestInit = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `bearer ${process.env.STRAPI_API_KEY}`,
+  },
+};
+
+async function fetchShopData() {
+  const res = await fetch(shopDataURL, Options);
+  if (!res) {
+    return console.log(Error);
+  }
+  return res.json();
+}
+
+export default async function page() {
+  const getShopData = await fetchShopData();
+  //console.log(getData);
   return (
     <div className="space-y-8">
       <div className="text-4xl mx-auto w-fit h-fit font-semibold font-psk">
@@ -63,9 +84,9 @@ export default function page() {
         </div>
       </div>
       <div className="flex justify-center flex-wrap">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <ProductCards key={i} />
-        ))}
+        {/*{getShopData?.map((product: ProductsType) => (
+          <ProductCards key={product.product_id} />
+        ))}*/}
       </div>
       <div className="mx-auto w-full max-w-xl font-arimo">
         <Accordion type="single" collapsible>
