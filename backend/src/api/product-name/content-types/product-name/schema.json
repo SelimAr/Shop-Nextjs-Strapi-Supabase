@@ -18,7 +18,7 @@
     "product_desc": {
       "type": "text"
     },
-    "product_img": {
+    "product_img_slider": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -34,6 +34,16 @@
     },
     "product_id": {
       "type": "string"
+    },
+    "product_img_single": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

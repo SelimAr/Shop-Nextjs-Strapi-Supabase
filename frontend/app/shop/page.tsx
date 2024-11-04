@@ -30,7 +30,7 @@ async function fetchShopData() {
 
 export default async function page() {
   const getShopData = await fetchShopData();
-  //console.log(getData);
+  //console.log(getShopData.data);
   return (
     <div className="space-y-8">
       <div className="text-4xl mx-auto w-fit h-fit font-semibold font-psk">
@@ -84,9 +84,10 @@ export default async function page() {
         </div>
       </div>
       <div className="flex justify-center flex-wrap">
-        {/*{getShopData?.map((product: ProductsType) => (
-          <ProductCards key={product.product_id} />
-        ))}*/}
+        {getShopData.data.length > 0 &&
+          getShopData.data.map((product: ProductsType) => (
+            <ProductCards key={product.product_id} {...product} />
+          ))}
       </div>
       <div className="mx-auto w-full max-w-xl font-arimo">
         <Accordion type="single" collapsible>

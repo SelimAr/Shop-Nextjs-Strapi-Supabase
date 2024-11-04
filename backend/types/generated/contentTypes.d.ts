@@ -557,7 +557,10 @@ export interface ApiProductNameProductName extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     product_desc: Schema.Attribute.Text;
     product_id: Schema.Attribute.String;
-    product_img: Schema.Attribute.Media<
+    product_img_single: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    product_img_slider: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
