@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from "../components/SearchBar";
+import BreadCrumb from "../components/BreadCrumb";
 
 export default function ShopLayout({
   children,
@@ -9,6 +10,7 @@ export default function ShopLayout({
   return (
     <div className="space-y-5">
       <SearchBar />
+      <BreadCrumb />
       {children}
     </div>
   );
