@@ -10,7 +10,7 @@ import {
 import ProductCards from "../components/ProductCards";
 import { ProductsType } from "@/type";
 
-const shopDataURL = `http://localhost:1337/api/product-names`;
+const shopDataURL = `http://localhost:1337/api/products`;
 
 const Options: RequestInit = {
   method: "GET",
@@ -86,7 +86,7 @@ export default async function page() {
       <div className="flex justify-center flex-wrap">
         {getShopData.data.length > 0 &&
           getShopData.data.map((product: ProductsType) => (
-            <ProductCards key={product.product_id} {...product} />
+            <ProductCards key={product.uid} {...product} />
           ))}
       </div>
       <div className="mx-auto w-full max-w-xl font-arimo">

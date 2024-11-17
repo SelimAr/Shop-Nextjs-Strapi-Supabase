@@ -22,7 +22,6 @@ export default function Navbar() {
 
   /**
    * TODO: Install Redux for global state store (shopping cart)
-   * TODO: Get out ShoppingCart Item & UserRound Item of navbar for interact with modal and auth
    */
 
   return (
@@ -39,8 +38,27 @@ export default function Navbar() {
         <ShoppingCart size={25} />
       </button>
       {isShopppingCart ? (
-        <div className="absolute -translate-y-12 translate-x-40 border border-black rounded-lg p-1">
-          <PathButton icon={<ShoppingCart size={25} />} onPath="/shop/review" />
+        <div
+          className="absolute bottom-14 left-16 rounded-lg border border-zinc-200 bg-white w-fit h-fit
+        max-w-56 p-2 font-arimo block space-y-2"
+        >
+          <div className="text-xl font-semibold line-clamp-2 w-fit h-fit overflow">
+            x3 Produits
+          </div>
+          <div className="max-w-fit max-h-44 overflow-y-auto">
+            {/* List of shop cart products */}a word that refers to a lung
+            disease contracted from the inhalation of very fine silica
+            particles, specifically from a volcano; medically, it is the same as
+            silicosis. fezf feef fe fe f ef ezfezfez it is the same as
+            silicosis. fezf feef fe fe f ef ezfezfez
+          </div>
+
+          <PathButton
+            onPath="/shop/review"
+            className="bg-black/5 flex items-center mx-auto"
+          >
+            Accéder au panier
+          </PathButton>
         </div>
       ) : null}
       <PathButton icon={<UserRound size={25} />} onPath="/account">

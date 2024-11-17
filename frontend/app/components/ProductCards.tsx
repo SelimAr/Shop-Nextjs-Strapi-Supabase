@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardContent,
@@ -16,32 +16,28 @@ import { ProductsType } from "@/type";
 
 export default function ProductCards(props: ProductsType) {
   const router = useRouter();
-  const {
-    product_id,
-    product_name,
-    product_desc,
-    product_img_slider,
-    product_img_single,
-    product_price,
-  } = props;
+  const { uid, title, description, media_single, media_slider, price } = props;
 
   return (
-    <Card key={product_id} onClick={() => router.push(`/shop/${product_name}`)}>
+    <Card
+      key={uid}
+      onClick={() => router.push(`/shop/${uid}?product=${title}`)}
+    >
       <CardHeader>
-        <CardTitle>{product_name}</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <Image
-          src={product_img_single || img_test}
-          alt={product_name}
+          src={media_single || img_test}
+          alt={title}
           width={200}
           height={250}
           className="objet-cover rounded-lg mx-auto"
         />
       </CardContent>
       <CardFooter>
-        <CardDescription>{product_desc}</CardDescription>
-        <p>{product_price}€</p>
+        <CardDescription>{description}</CardDescription>
+        <p>{price}€</p>
       </CardFooter>
     </Card>
   );

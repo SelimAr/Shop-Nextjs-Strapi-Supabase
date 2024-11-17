@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter, usePathname } from "next/navigation";
 
 interface PathBtn {
-  icon: any;
+  icon?: any;
   onPath: string;
   className?: boolean | string;
   children?: React.ReactNode;

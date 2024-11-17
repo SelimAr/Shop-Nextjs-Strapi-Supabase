@@ -3,6 +3,7 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { createClient } from "../utils/supabase/server";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,8 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-//Register to supabase
+import { register } from "./actions";
 
 const formSchema = z.object({
   username: z
@@ -35,12 +35,13 @@ const formSchema = z.object({
     .min(10, {
       message: "Le mot de passe doit contenir au moins 10 caractères",
     })
-    .max(30, {
-      message: "Le mot de passe ne peut pas contenir plus de 30 caractères",
+    .max(20, {
+      message: "Le mot de passe ne peut pas contenir plus de 20 caractères",
     }),
 });
 
-export default function page() {
+export default async function page() {
+  const supabase = await createClient();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -50,10 +51,17 @@ export default function page() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    //console.log(values);
+    const { data, error } = await supabase.auth.signUp({
+      email: "example@email.com",
+      password: "example-password",
+      options: {
+        emailRedirectTo: "https://example.com/welcome",
+      },
+    });
   }
 
   return (
@@ -97,7 +105,7 @@ export default function page() {
                 </FormControl>
                 <FormMessage />
                 <FormDescription>
-                  Connectez vous pour éffectuer des achats.
+                  Inscrivez vous pour éffectuer des achats.
                 </FormDescription>
               </FormItem>
             )}

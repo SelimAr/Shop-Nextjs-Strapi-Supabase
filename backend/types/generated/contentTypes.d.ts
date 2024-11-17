@@ -534,13 +534,13 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiProductNameProductName extends Struct.CollectionTypeSchema {
-  collectionName: 'product_names';
+export interface ApiProductProduct extends Struct.CollectionTypeSchema {
+  collectionName: 'products';
   info: {
     description: '';
-    displayName: 'Product';
-    pluralName: 'product-names';
-    singularName: 'product-name';
+    displayName: 'Products';
+    pluralName: 'products';
+    singularName: 'product';
   };
   options: {
     draftAndPublish: true;
@@ -549,24 +549,24 @@ export interface ApiProductNameProductName extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::product-name.product-name'
+      'api::product.product'
     > &
       Schema.Attribute.Private;
-    product_desc: Schema.Attribute.Text;
-    product_id: Schema.Attribute.String;
-    product_img_single: Schema.Attribute.Media<
+    media_single: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    product_img_slider: Schema.Attribute.Media<
+    media_slider: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
-    product_name: Schema.Attribute.String;
-    product_price: Schema.Attribute.Decimal;
+    price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    uid: Schema.Attribute.BigInteger;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1083,7 +1083,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
-      'api::product-name.product-name': ApiProductNameProductName;
+      'api::product.product': ApiProductProduct;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
