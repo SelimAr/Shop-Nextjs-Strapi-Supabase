@@ -23,7 +23,7 @@ export default function BreadCrumb() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{pathname}</BreadcrumbPage>
+            <BreadcrumbPage>{pathname.split("/")[2]}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

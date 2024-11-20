@@ -21,8 +21,6 @@ export default function RenderPoduct() {
     <>
       {pathname === `/shop/${currentPath?.pathEn}` ? (
         <ProductLists path={currentPath?.pathFr} />
-      ) : pathname === `/shop/productID` ? (
-        <Product />
       ) : null}
     </>
   );

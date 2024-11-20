@@ -16,7 +16,7 @@ export default function PathButton(props: PathBtn) {
     <button
       onClick={() => router.push(onPath)}
       className={`${
-        pathname === onPath && "text-white bg-black hover:bg-black/100"
+        pathname === onPath && "text-white bg-black hover:bg-black"
       } text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full ${className}`}
     >
       {icon} {children}

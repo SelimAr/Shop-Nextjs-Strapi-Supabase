@@ -6,7 +6,7 @@ import ProductCards from "@/app/components/ProductCards";
 export default async function page({
   params,
 }: {
-  params: Promise<{ product_id: string }>;
+  params: Promise<{ product_id: number }>;
 }) {
   const uid = (await params).product_id;
   const productDataURL = `http://localhost:1337/api/products?filters[uid][$eq]=${uid}`;
@@ -36,7 +36,6 @@ export default async function page({
         getProductData.data.map((product: ProductsType) => (
           <Product key={product.uid} {...product} />
         ))}
-      <div className="text-red-500">{uid}</div>
     </div>
   );
 }

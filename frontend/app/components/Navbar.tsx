@@ -9,8 +9,10 @@ import {
   UserRound,
   LogIn,
   LogOut,
+  Heart,
 } from "lucide-react";
 import PathButton from "./PathButton";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const [isShopppingCart, setIsShopppingCart] = useState(false);
@@ -22,6 +24,7 @@ export default function Navbar() {
 
   /**
    * TODO: Install Redux for global state store (shopping cart)
+   * !test: try to put onPath attr on Button comp
    */
 
   return (
@@ -31,12 +34,13 @@ export default function Navbar() {
           <PathButton key={path.id} icon={path.icon} onPath={path.onPath} />
         </div>
       ))}
-      <button
+      <PathButton icon={<Heart size={25} />} onPath="/shop/favorites" />
+      <Button
         onClick={() => setIsShopppingCart(!isShopppingCart)}
-        className="text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full"
+        className="bg-transparent text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full"
       >
         <ShoppingCart size={25} />
-      </button>
+      </Button>
       {isShopppingCart ? (
         <div
           className="absolute bottom-14 left-16 rounded-lg border border-zinc-200 bg-white w-fit h-fit
@@ -64,9 +68,9 @@ export default function Navbar() {
       <PathButton icon={<UserRound size={25} />} onPath="/account">
         <span className="absolute translate-x-1 -translate-y-8 bg-green-500 w-3 h-3 rounded-full"></span>
       </PathButton>
-      <button className="text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full">
+      <Button className="bg-transparent text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full">
         <LogIn size={25} />
-      </button>
+      </Button>
     </div>
   );
 }
