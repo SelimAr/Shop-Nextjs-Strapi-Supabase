@@ -556,13 +556,8 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::product.product'
     > &
       Schema.Attribute.Private;
-    media_single: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    media_slider: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    media_single: Schema.Attribute.Media<'images' | 'files'>;
+    media_slider: Schema.Attribute.Media<'images' | 'files', true>;
     price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;

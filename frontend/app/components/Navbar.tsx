@@ -24,6 +24,7 @@ export default function Navbar() {
 
   /**
    * TODO: Install Redux for global state store (shopping cart)
+   * TODO: Install popover shadcn comp
    * !test: try to put onPath attr on Button comp
    */
 

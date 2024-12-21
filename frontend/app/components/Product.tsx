@@ -1,21 +1,27 @@
+"use client";
+
 import React from "react";
 import { ProductsType } from "@/type";
 import Image from "next/image";
 import img_test from "@/public/img_test.jpg";
 import { Heart, HeartOff, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Ratings from "./Ratings";
+import { Textarea } from "@/components/ui/textarea";
+import ProductsCounter from "./ProductsCounter";
 
 export default function Product(props: ProductsType) {
   const { uid, title, description, price, media_single, media_slider } = props;
+  const imgURL = "http://localhost:1337" + media_single.url;
   return (
     <div
       key={uid}
-      className="font-arimo bg-slate-300 w-full h-full block text-black "
+      className="font-arimo px-14 space-y-5 w-full h-full block text-black "
     >
-      <div className="flex justify-around space-x-10">
+      <div className="flex justify-between">
         <div>
           <Image
-            src={media_single || img_test}
+            src={imgURL}
             alt={title}
             width={1920}
             height={1080}
@@ -30,10 +36,18 @@ export default function Product(props: ProductsType) {
           <Button size="lg" className="w-full max-w-60">
             Favoris <Heart size={25} />
           </Button>
+          <ProductsCounter />
           <Button size="lg" className="w-full max-w-60">
             Ajouter au panier <ShoppingCart size={25} />
           </Button>
         </div>
+      </div>
+      <div className="space-y-5">
+        <Ratings />
+        <form className="space-y-3">
+          <Textarea />
+          <Button>Commenter</Button>
+        </form>
       </div>
     </div>
   );

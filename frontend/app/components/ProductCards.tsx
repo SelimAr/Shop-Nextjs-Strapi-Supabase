@@ -17,6 +17,7 @@ import { ProductsType } from "@/type";
 export default function ProductCards(props: ProductsType) {
   const router = useRouter();
   const { uid, title, description, media_single, media_slider, price } = props;
+  const imgURL = "http://localhost:1337" + media_single.url;
 
   return (
     <Card
@@ -28,7 +29,7 @@ export default function ProductCards(props: ProductsType) {
       </CardHeader>
       <CardContent>
         <Image
-          src={media_single || img_test}
+          src={imgURL}
           alt={title}
           width={200}
           height={250}

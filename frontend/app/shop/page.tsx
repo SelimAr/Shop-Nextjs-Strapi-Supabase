@@ -9,8 +9,9 @@ import {
 } from "@/components/ui/accordion";
 import ProductCards from "../components/ProductCards";
 import { ProductsType } from "@/type";
+import Footer from "../components/Footer";
 
-const shopDataURL = `http://localhost:1337/api/products`;
+const shopDataURL = `http://localhost:1337/api/products?populate[media_single][fields][0]=url`;
 
 const Options: RequestInit = {
   method: "GET",
@@ -32,11 +33,12 @@ export default async function page() {
   const getShopData = await fetchShopData();
   //console.log(getShopData.data);
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 px-5">
       <div className="text-4xl mx-auto w-fit h-fit font-semibold font-psk">
         Vous L'imaginiez, il l'a fait.
       </div>
       <div className="grid grid-rows-2 grid-flow-col gap-3 w-fit h-fit mx-auto ">
+        {/* Another Collection */}
         <div className="row-span-1 col-span-1 cursor-pointer">
           <Image
             src={img_test}
@@ -89,7 +91,7 @@ export default async function page() {
             <ProductCards key={product.uid} {...product} />
           ))}
       </div>
-      <div className="mx-auto w-full max-w-xl font-arimo">
+      <div className="mx-auto w-full max-w-4xl font-arimo">
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
             <AccordionTrigger>
@@ -107,8 +109,17 @@ export default async function page() {
               Oui, ces produits sont aux normes et standards européens.
             </AccordionContent>
           </AccordionItem>
+          <AccordionItem value="item-3">
+            <AccordionTrigger>
+              Ces produits sont ils aux normes européennes ?
+            </AccordionTrigger>
+            <AccordionContent>
+              Oui, ces produits sont aux normes et standards européens.
+            </AccordionContent>
+          </AccordionItem>
         </Accordion>
       </div>
+      <Footer />
     </div>
   );
 }

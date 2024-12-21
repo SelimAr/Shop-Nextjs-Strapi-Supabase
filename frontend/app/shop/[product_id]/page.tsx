@@ -9,7 +9,7 @@ export default async function page({
   params: Promise<{ product_id: number }>;
 }) {
   const uid = (await params).product_id;
-  const productDataURL = `http://localhost:1337/api/products?filters[uid][$eq]=${uid}`;
+  const productDataURL = `http://localhost:1337/api/products?populate[media_single][fields][0]=url&[filters][uid][$eq]=${uid}`;
 
   const Options: RequestInit = {
     method: "GET",
