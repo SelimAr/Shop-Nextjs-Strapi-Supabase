@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import MediaCollection from "../components/MediaCollection";
 import ProductCards from "../components/ProductCards";
 import { ProductsType } from "@/type";
 import Footer from "../components/Footer";
@@ -37,44 +38,11 @@ export default async function page() {
       <div className="text-4xl mx-auto w-fit h-fit font-semibold font-psk">
         Vous L'imaginiez, il l'a fait.
       </div>
-      <div className="grid grid-rows-2 grid-flow-col gap-3 w-fit h-fit mx-auto ">
-        {/* Another Collection */}
-        <div className="row-span-1 col-span-1 cursor-pointer">
-          <Image
-            src={img_test}
-            alt="test"
-            width={250}
-            height={250}
-            className="object-cover rounded-lg"
-          />
-        </div>
-        <div className="row-span-1 col-span-1 cursor-pointer">
-          <Image
-            src={img_test}
-            alt="test"
-            width={250}
-            height={250}
-            className="object-cover rounded-lg"
-          />
-        </div>
-        <div className="row-span-1 col-span-1 cursor-pointer">
-          <Image
-            src={img_test}
-            alt="test"
-            width={250}
-            height={250}
-            className="object-cover rounded-lg"
-          />
-        </div>
-        <div className="row-span-1 col-span-1 cursor-pointer">
-          <Image
-            src={img_test}
-            alt="test"
-            width={250}
-            height={250}
-            className="object-cover rounded-lg"
-          />
-        </div>
+      <div className="grid grid-rows-2 grid-flow-col gap-3 w-fit h-fit mx-auto">
+        {getShopData.data.length > 0 &&
+          getShopData.data.map((mediaLib: ProductsType) => (
+            <MediaCollection key={mediaLib.uid} {...mediaLib} />
+          ))}
         <div className="row-span-2 col-span-2 w-fit h-fit">
           <Image
             src={img_test}

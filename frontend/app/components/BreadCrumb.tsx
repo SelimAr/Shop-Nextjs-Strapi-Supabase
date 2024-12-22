@@ -23,7 +23,11 @@ export default function BreadCrumb() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{pathname.split("/")[2]}</BreadcrumbPage>
+            <BreadcrumbPage>
+              {pathname.includes("product")
+                ? pathname.split("/")[1]
+                : pathname.split("/")[2]}
+            </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

@@ -14,7 +14,7 @@ export default function ProductsCounter() {
       />
       <Input
         className="border-black border p-2 rounded-md text-black text-lg text-center"
-        value={isCounter}
+        defaultValue={isCounter}
       />
       <Button
         children={<Plus size={25} />}
