@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import img_test from "@/public/img_test.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +9,7 @@ import MediaCollection from "../components/MediaCollection";
 import ProductCards from "../components/ProductCards";
 import { ProductsType } from "@/type";
 import Footer from "../components/Footer";
+import Carousel from "../components/Carousel";
 
 const shopDataURL = `http://localhost:1337/api/products?populate[media_single][fields][0]=url`;
 
@@ -44,13 +43,7 @@ export default async function page() {
             <MediaCollection key={mediaLib.uid} {...mediaLib} />
           ))}
         <div className="row-span-2 col-span-2 w-fit h-fit">
-          <Image
-            src={img_test}
-            alt="test"
-            width={525}
-            height={525}
-            className=" rounded-lg object-cover"
-          />
+          <Carousel sliderData={getShopData.data} />
         </div>
       </div>
       <div className="flex justify-center flex-wrap">

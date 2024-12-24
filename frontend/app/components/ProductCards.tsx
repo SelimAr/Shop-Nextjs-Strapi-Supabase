@@ -10,14 +10,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
-import img_test from "@/public/img_test.jpg";
 import { useRouter } from "next/navigation";
 import { ProductsType } from "@/type";
 
 export default function ProductCards(props: ProductsType) {
   const router = useRouter();
-  const { uid, title, description, media_single, media_slider, price } = props;
-  const imgURL = "http://localhost:1337" + media_single.url;
+  const { uid, title, description, media_single, price } = props;
 
   return (
     <Card
@@ -29,7 +27,7 @@ export default function ProductCards(props: ProductsType) {
       </CardHeader>
       <CardContent>
         <Image
-          src={imgURL}
+          src={`http://localhost:1337${media_single.url}`}
           alt={title}
           width={200}
           height={250}

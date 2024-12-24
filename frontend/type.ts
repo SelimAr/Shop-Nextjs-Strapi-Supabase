@@ -6,6 +6,9 @@ export type ProductsType = {
     id: number;
     url: string;
   };
-  media_slider: any;
+  media_slider: {
+    id: number;
+    url: string;
+  };
   price: number;
 };
