@@ -1,6 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { useActionState } from "react";
+import { signout } from "../actions/auth";
+import PathButton from "./PathButton";
+import { Button } from "@/components/ui/button";
+import { type User } from "@supabase/supabase-js";
 import {
   Laptop,
   Smartphone,
@@ -11,11 +16,14 @@ import {
   LogOut,
   Heart,
 } from "lucide-react";
-import PathButton from "./PathButton";
-import { Button } from "@/components/ui/button";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
-export default function Navbar() {
-  const [isShopppingCart, setIsShopppingCart] = useState(false);
+export default function Navbar({ user }: { user: User | null }) {
+  const [state, action, pending] = useActionState(signout, undefined);
   const pathMenu = [
     { id: 1, icon: <Laptop size={25} />, onPath: "/shop/laptops" },
     { id: 2, icon: <Smartphone size={25} />, onPath: "/shop/smartphones" },
@@ -25,7 +33,6 @@ export default function Navbar() {
   /**
    * TODO: Install Redux for global state store (shopping cart)
    * TODO: Install popover shadcn comp
-   * !test: try to put onPath attr on Button comp
    */
 
   return (
@@ -36,42 +43,49 @@ export default function Navbar() {
         </div>
       ))}
       <PathButton icon={<Heart size={25} />} onPath="/shop/favorites" />
-      <Button
-        onClick={() => setIsShopppingCart(!isShopppingCart)}
-        className="bg-transparent text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full"
-      >
-        <ShoppingCart size={25} />
-      </Button>
-      {isShopppingCart ? (
-        <div
-          className="absolute bottom-14 left-16 rounded-lg border border-zinc-200 bg-white w-fit h-fit
-        max-w-56 p-2 font-arimo block space-y-2"
-        >
+
+      <Popover>
+        <PopoverTrigger className="bg-transparent text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full">
+          <ShoppingCart size={25} />
+        </PopoverTrigger>
+        <PopoverContent>
           <div className="text-xl font-semibold line-clamp-2 w-fit h-fit overflow">
             x3 Produits
           </div>
           <div className="max-w-fit max-h-44 overflow-y-auto">
-            {/* List of shop cart products */}a word that refers to a lung
-            disease contracted from the inhalation of very fine silica
-            particles, specifically from a volcano; medically, it is the same as
-            silicosis. fezf feef fe fe f ef ezfezfez it is the same as
-            silicosis. fezf feef fe fe f ef ezfezfez
+            x1 MacBook Pro 14'
           </div>
 
           <PathButton
             onPath="/shop/review"
-            className="bg-black/5 flex items-center mx-auto"
+            className="bg-black/5 flex items-center mx-auto w-fit bottom-2 inset-x-0 absolute z-50"
           >
             Accéder au panier
           </PathButton>
-        </div>
-      ) : null}
-      <PathButton icon={<UserRound size={25} />} onPath="/account">
-        <span className="absolute translate-x-1 -translate-y-8 bg-green-500 w-3 h-3 rounded-full"></span>
+        </PopoverContent>
+      </Popover>
+
+      <PathButton
+        icon={<UserRound size={25} />}
+        onPath={`${user ? "/account" : "/login"}`}
+      >
+        <span
+          className={`${
+            user ? "bg-green-500" : "bg-red-500"
+          } absolute translate-x-1 -translate-y-8 w-3 h-3 rounded-full`}
+        ></span>
       </PathButton>
-      <Button className="bg-transparent text-black hover:cursor-pointer hover:bg-black/15 p-1.5 rounded-full">
-        <LogIn size={25} />
-      </Button>
+      {user ? (
+        <form action={action} className="space-y-8">
+          <Button
+            disabled={pending}
+            type="submit"
+            className="bg-red-500/30 hover:bg-red-500/50 text-black hover:cursor-pointer  p-1.5 rounded-full"
+          >
+            <LogOut size={25} />
+          </Button>
+        </form>
+      ) : null}
     </div>
   );
 }

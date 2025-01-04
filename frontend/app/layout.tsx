@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Arimo, Playwrite_SK } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Navigation from "./components/Navigation";
 
 const arimo = Arimo({
   weight: ["400", "700"],
@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${arimo.variable} ${psk.variable} block mx-auto w-full max-w-6xl p-2 my-5 `}
       >
         {children}
-        <Navbar />
+        <Navigation />
       </body>
     </html>
   );

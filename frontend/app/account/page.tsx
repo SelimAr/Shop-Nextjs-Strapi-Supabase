@@ -51,23 +51,15 @@ export default function page() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
   return (
     <div>
-      <button
-        className="bg-black/10 p-1.5 rounded-full"
-        onClick={() => router.push("/shop")}
-      >
+      <Button className="p-2 rounded-full" onClick={() => router.push("/shop")}>
         <MoveLeft size={25} />
-      </button>
+      </Button>
 
       <div className="border border-gray-200 p-5 w-full h-fit max-w-3xl inset-0 m-auto absolute rounded-lg font-arimo">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form className="space-y-8">
             <FormField
               control={form.control}
               name="username"

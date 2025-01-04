@@ -23,6 +23,7 @@ const Options: RequestInit = {
 
 async function fetchShopData() {
   const res = await fetch(shopDataURL, Options);
+
   if (!res) {
     return console.log(Error);
   }
@@ -33,10 +34,11 @@ export default async function page() {
   const getShopData = await fetchShopData();
   //console.log(getShopData.data);
   return (
-    <div className="space-y-8 px-5">
+    <div className="space-y-10 px-5">
       <div className="text-4xl mx-auto w-fit h-fit font-semibold font-psk">
         Vous L'imaginiez, il l'a fait.
       </div>
+
       <div className="grid grid-rows-2 grid-flow-col gap-3 w-fit h-fit mx-auto">
         {getShopData.data.length > 0 &&
           getShopData.data.map((mediaLib: ProductsType) => (

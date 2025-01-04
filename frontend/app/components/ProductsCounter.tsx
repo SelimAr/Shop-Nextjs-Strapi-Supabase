@@ -19,7 +19,7 @@ export default function ProductsCounter() {
       <Button
         children={<Plus size={25} />}
         onClick={() => setIsCounter(isCounter + 1)}
-        disabled={isCounter === 99}
+        disabled={isCounter >= 99}
       />
     </div>
   );

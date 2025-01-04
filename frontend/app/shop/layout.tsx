@@ -8,7 +8,7 @@ export default function ShopLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 mb-14">
       <SearchBar />
       <BreadCrumb />
       {children}
