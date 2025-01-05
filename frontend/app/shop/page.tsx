@@ -1,15 +1,15 @@
 import React from "react";
+import MediaCollection from "../components/MediaCollection";
+import ProductCards from "../components/ProductCards";
+import { ProductsType } from "@/type";
+import Footer from "../components/Footer";
+import Carousel from "../components/Carousel";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import MediaCollection from "../components/MediaCollection";
-import ProductCards from "../components/ProductCards";
-import { ProductsType } from "@/type";
-import Footer from "../components/Footer";
-import Carousel from "../components/Carousel";
 
 const shopDataURL = `http://localhost:1337/api/products?populate[media_single][fields][0]=url`;
 
@@ -39,12 +39,15 @@ export default async function page() {
         Vous L'imaginiez, il l'a fait.
       </div>
 
-      <div className="grid grid-rows-2 grid-flow-col gap-3 w-fit h-fit mx-auto">
+      <div
+        className="grid grid-rows-2 grid-flow-col gap-3 justify-center items-center w-full h-fit max-w-[67rem] 
+      mx-auto max-[1000px]:flex-wrap"
+      >
         {getShopData.data.length > 0 &&
           getShopData.data.map((mediaLib: ProductsType) => (
             <MediaCollection key={mediaLib.uid} {...mediaLib} />
           ))}
-        <div className="row-span-2 col-span-2 w-fit h-fit">
+        <div className="row-span-2 col-span-2 w-full h-fit">
           <Carousel sliderData={getShopData.data} />
         </div>
       </div>

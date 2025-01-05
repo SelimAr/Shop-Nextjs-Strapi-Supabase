@@ -1,9 +1,6 @@
 import React from "react";
 import { Star } from "lucide-react";
 
-//function which getting number in table Rating and print on stars
-//making customer review feature
-
 export default function Ratings() {
   return (
     <div className="block font-arimo space-y-3">

@@ -28,7 +28,7 @@ export default function Carousel({
           pauseOnMouseEnter: true,
         }}
         effect="coverflow"
-        className="rounded-lg max-w-96"
+        className="rounded-lg h-fit w-[30rem]"
       >
         {isSliderData.length > 0 &&
           isSliderData?.map((data) => (
@@ -36,9 +36,9 @@ export default function Carousel({
               <Image
                 src={`http://localhost:1337${data.media_single.url}`}
                 alt={data.title}
-                width={525}
-                height={525}
-                className=" rounded-lg object-cover"
+                width={800}
+                height={500}
+                className="rounded-lg object-cover "
               />
             </SwiperSlide>
           ))}

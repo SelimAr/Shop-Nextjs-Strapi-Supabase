@@ -2,6 +2,7 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import ProductsRender from "@/app/components/ProductsRender";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,7 +11,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import ProductsRender from "@/app/components/ProductsRender";
 
 export default function BreadCrumb() {
   const pathname = usePathname();

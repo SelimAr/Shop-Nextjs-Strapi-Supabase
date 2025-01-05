@@ -7,43 +7,21 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { accountFormSchema } from "@/lib/definition";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
-const formSchema = z.object({
-  username: z
-    .string()
-    .min(2, {
-      message: "Le nom doit ccontenir au moins 2 caractères",
-    })
-    .max(25, {
-      message: "Le nom doit ccontenir moins de 25 caractères",
-    }),
-  email: z.string().email({
-    message: "L'email est invalide",
-  }),
-  password: z
-    .string()
-    .min(10, {
-      message: "Le mot de passe doit contenir au moins 10 caractères",
-    })
-    .max(30, {
-      message: "Le mot de passe ne peut pas contenir plus de 30 caractères",
-    }),
-});
 
 export default function page() {
   const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof accountFormSchema>>({
+    resolver: zodResolver(accountFormSchema),
     defaultValues: {
       username: "",
       email: "",

@@ -2,7 +2,6 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
-import Product from "./Product";
 import ProductLists from "./ProductLists";
 
 export default function RenderPoduct() {

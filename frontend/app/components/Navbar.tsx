@@ -12,7 +12,6 @@ import {
   Headphones,
   ShoppingCart,
   UserRound,
-  LogIn,
   LogOut,
   Heart,
 } from "lucide-react";
@@ -29,11 +28,6 @@ export default function Navbar({ user }: { user: User | null }) {
     { id: 2, icon: <Smartphone size={25} />, onPath: "/shop/smartphones" },
     { id: 3, icon: <Headphones size={25} />, onPath: "/shop/accessories" },
   ];
-
-  /**
-   * TODO: Install Redux for global state store (shopping cart)
-   * TODO: Install popover shadcn comp
-   */
 
   return (
     <div className="fixed m-auto inset-x-0 bottom-5 w-fit h-fit bg-black/10 p-1.5 space-x-5 flex items-center rounded-full backdrop-blur">
@@ -76,11 +70,11 @@ export default function Navbar({ user }: { user: User | null }) {
         ></span>
       </PathButton>
       {user ? (
-        <form action={action} className="space-y-8">
+        <form action={action}>
           <Button
             disabled={pending}
             type="submit"
-            className="bg-red-500/30 hover:bg-red-500/50 text-black hover:cursor-pointer  p-1.5 rounded-full"
+            className="bg-red-500/30 hover:bg-red-500/50 text-black hover:cursor-pointer p-1.5 rounded-full"
           >
             <LogOut size={25} />
           </Button>

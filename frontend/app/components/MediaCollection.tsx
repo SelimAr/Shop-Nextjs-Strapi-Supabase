@@ -9,8 +9,8 @@ export default function MediaCollection(props: ProductsType) {
       <Image
         src={`http://localhost:1337${media_single.url}`}
         alt={title}
-        width={250}
-        height={250}
+        width={232}
+        height={200}
         className="object-cover rounded-lg"
       />
     </div>

@@ -3,7 +3,6 @@
 import React from "react";
 import { ProductsType } from "@/type";
 import Image from "next/image";
-import img_test from "@/public/img_test.jpg";
 import { Heart, HeartOff, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Ratings from "./Ratings";

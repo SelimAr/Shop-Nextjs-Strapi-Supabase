@@ -1,7 +1,6 @@
-import React, { use } from "react";
+import React from "react";
 import { ProductsType } from "@/type";
 import Product from "@/app/components/Product";
-import ProductCards from "@/app/components/ProductCards";
 
 export default async function page({
   params,

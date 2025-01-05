@@ -1,16 +1,10 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { createClient } from "@/app/utils/supabase/client";
 import { useRouter } from "next/navigation";
 
-/*interface FavoritesAttr {
-  uid: (
-    e: React.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-  ) => void;
-}*/
-
 export default function FavoritesItems() {
-  //const { uid } = props;
   const supabase = createClient();
   const router = useRouter();
   const [isFavItems, setIsFavItems] = useState<any[]>([]);

@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { createClient } from "../utils/supabase/server";
 import { registerFormSchema, signInFormSchema } from "@/lib/definition";
 import { FormState } from "@/type";
-var bcryptjs = require("bcryptjs");
 
 const supabase = await createClient();
 
@@ -27,7 +26,6 @@ export async function signup(state: FormState, formData: FormData) {
   }
 
   const { username, email, password } = validatedFields.data;
-  //const hashedPassword = await bcryptjs.hash(password, 10);
 
   const { data, error } = await supabase.auth.signUp({
     email: email,
